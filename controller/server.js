@@ -12,8 +12,8 @@ app.use(cors());
 app.use(express.json());
 
 // Serve semua file statis
-app.use(express.static(path.join(__dirname, "../"))); // index.html
-app.use("/css", express.static(path.join(__dirname, "/css"))); // style.css
+app.use(express.static(path.join(__dirname, "../app"))); // index.html
+app.use("/css", express.static(path.join(__dirname, "../css"))); // style.css
 app.use("/controller", express.static(path.join(__dirname, "../controller"))); // script.js
 app.use("/image", express.static(path.join(__dirname, "../image"))); // gambar
 
