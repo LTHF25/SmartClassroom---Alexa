@@ -6,21 +6,16 @@ const path = require("path");
 
 dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
 
-// Serve semua file statis
-app.use(express.static(path.join(__dirname, "../app"))); // index.html
-app.use("/css", express.static(path.join(__dirname, "../css"))); // style.css
-app.use("/controller", express.static(path.join(__dirname, "../controller"))); // script.js
-app.use("/image", express.static(path.join(__dirname, "../image"))); // gambar
+// Serve semua file statis dari folder public di root project
+app.use(express.static(path.join(__dirname, "../public")));
 
 // Endpoint generate
 app.post("/generate", async (req, res) => {
   const userMessage = req.body.message;
-
   try {
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.API_KEY}`,
@@ -32,7 +27,6 @@ app.post("/generate", async (req, res) => {
         }),
       }
     );
-
     const data = await response.json();
     res.json(data);
   } catch (err) {
@@ -41,6 +35,5 @@ app.post("/generate", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server berjalan di http://localhost:${PORT}`);
-});
+// Jangan gunakan app.listen() di Vercel
+module.exports = app;
