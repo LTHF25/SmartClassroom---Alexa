@@ -1,0 +1,23 @@
+{
+  "name": "smartclassroom---alexa",
+  "version": "1.0.0",
+  "description": "🧠 **Tujuan Ringkas**  \r Mengembangkan sistem pencahayaan otomatis di dalam ruang kelas berbasis sensor intensitas cahaya (LDR), dengan kontrol menggunakan mikrokontroler ESP32 dan dimming lampu via MOSFET. Sistem ini menjadi bagian awal dari konsep smart classroom yang akan diperluas dengan asisten AI dan komponen pendukung lainnya.",
+  "main": "/controller/server.js",
+  "scripts": {
+    "start": "node controller/server.js",
+    "dev": "nodemon controller/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

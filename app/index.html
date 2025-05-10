@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width , initial-scale=1.0" />
+    <title>Gemini-Nawasena</title>
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <!-- Draw EDit Google font-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+    * {
+      font-family: "Poppins", sans-serif;
+    }
+  </style>
+  <body>
+    <!-- INI HEADER -->
+    <div class="container">
+      <header class="app-header">
+        <h1 class="heading">ALEXA</h1> <h4 class="heading-help">SmartClassroom</h4>
+      </header>
+
+      <!-- INI LIST APP -->
+    <ul class="suggestions">
+        <li class="suggestions-item">
+          <p class="text">
+            Temperature: <span id="temperature">--</span>°C
+          </p>
+          <span class="material-symbols-outlined">device_thermostat</span>
+        </li>
+        <li class="suggestions-item">
+          <p class="text">
+            Humidity: <span id="humidity">--</span>%
+          </p>
+          <span class="material-symbols-outlined">humidity_percentage</span>
+        </li>
+        <li class="suggestions-item">
+          <p class="text">
+            Gas Level: <span id="gas">--</span> | Status: <span id="status">--</span>
+          </p>
+          <span class="material-symbols-outlined">gas_meter</span>
+        </li>
+        <li class="suggestions-item">
+          <p class="text">
+            Light Level: <span id="ldr">--</span>
+          </p>
+          <span class="material-symbols-outlined">light_mode</span>
+        </li>
+      </ul>
+
+      <div class="chats-container">
+        <!-- <div class="pesan user-message">
+            <p class="pesan-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, nobis repellat! Expedita ipsum sunt quasi!</p>
+        </div>
+        <div class="pesan bot-message">
+            <img class="avatar" src="/image/gemini-chatbot-logo.svg" alt="gemini">
+            <p class="pesan-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, nobis repellat! Expedita ipsum sunt quasi!</p>
+        </div> -->
+      </div>
+
+      <!-- INI Prompt Container/input -->
+      <div class="prompt-container">
+        <div class="prompt-wrapper">
+          <form action="" class="prompt-form">
+            <input
+              type="text"
+              placeholder="Tanya AI.."
+              class="prompt-input"
+              required
+            />
+            <div class="prompt-actions">
+              <!-- <button
+                id="add-files-btn"
+                type="button"
+                class="material-symbols-outlined"
+              >
+                attach_file
+              </button> -->
+              <!-- <button id="add-files-btn" type="button" class="material-symbols-outlined"> smart_toy </button> -->
+              <!-- From Uiverse.io by sahilxkhadka -->
+              <input type="checkbox" id="checkbox" />
+              <label class="switch" for="checkbox">
+                <div class="mic-on">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    class="bi bi-mic-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3z"></path>
+                    <path
+                      d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="mic-off">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    class="bi bi-mic-mute-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M13 8c0 .564-.094 1.107-.266 1.613l-.814-.814A4.02 4.02 0 0 0 12 8V7a.5.5 0 0 1 1 0v1zm-5 4c.818 0 1.578-.245 2.212-.667l.718.719a4.973 4.973 0 0 1-2.43.923V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 1 0v1a4 4 0 0 0 4 4zm3-9v4.879L5.158 2.037A3.001 3.001 0 0 1 11 3z"
+                    ></path>
+                    <path
+                      d="M9.486 10.607 5 6.12V8a3 3 0 0 0 4.486 2.607zm-7.84-9.253 12 12 .708-.708-12-12-.708.708z"
+                    ></path>
+                  </svg>
+                </div>
+              </label>
+              <button id="send-prompt-btn" class="material-symbols-outlined">
+                arrow_upward
+              </button>
+              <button
+                id="stop-response-btn"
+                class="material-symbols-outlined"
+                style="display: none"
+              >
+                cancel
+              </button>
+            </div>
+          </form>
+
+          <button
+            type="button"
+            id="theme-toggle-btn"
+            class="material-symbols-outlined"
+          >
+            light_mode
+          </button>
+          <button
+            type="button"
+            id="delete-btn"
+            class="material-symbols-outlined"
+          >
+            delete
+          </button>
+        </div>
+        <footer class="disclaimer-text">
+          Gemini-Nawasena Lorem ipsum dolor sit amet.
+        </footer>
+      </div>
+    </div>
+
+    <script src="/controller/script.js"></script>
+  </body>
+</html>

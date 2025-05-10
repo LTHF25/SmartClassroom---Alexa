@@ -1,0 +1,499 @@
+:root {
+    --text-color: #edf3ff;
+    --warna-heading: #97a7ca;
+    --placeholder-color: #c3cdde;
+    --primary-color: #101623;
+    --secondary-color: #283045;
+    --secondary-hover-color: #333e58;
+    --scrollbar-color: #626a7f;
+}
+
+/* Fitur Dark-Light */
+body.tema-color {
+    --text-color: #0e1119;
+    --warna-heading: #4e586d;
+    --placeholder-color: #2b2f39;
+    --primary-color: #cbcfd5;
+    --secondary-color: #bccceb;
+    --secondary-hover-color: #d2ddf2;
+    --scrollbar-color: #a2aac2;
+}
+
+body {
+    color: var(--text-color);
+    background: var(--primary-color);
+    box-sizing: border-box;
+    
+
+}
+
+.container {
+display: flex;
+    flex-direction: column;
+    min-height: 130vh;
+    max-height: none;
+    overflow: visible;
+    padding-bottom: 80px;
+    /* beri ruang untuk prompt di bawah */
+}
+
+
+.container :where(.app-header, .suggestions, .prompt-wrapper, .pesan, .disclaimer-text) {
+    margin: 0 auto;
+    width: 95%;
+    padding: 0 20px;
+    max-width: 980px;
+}
+
+.container .app-header {
+    margin-top: 4vh;
+}
+
+.app-header .heading {
+    font-size: 3rem;
+    width: fit-content;
+    background: linear-gradient(to right, #1d7efd, #8f6fff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.app-header .heading-help {
+    font-size: 2.6rem;
+    margin-top: -43px;
+    color: var(--warna-heading);
+}
+
+/* suggestions style-- */
+
+.container .suggestions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin: 4vh auto;
+    padding: 20px;
+    list-style: none;
+    max-width: 1200px;
+}
+
+.container :is(.app-header, .suggestions) {
+    /* display: none; */
+}
+
+/* Improved card styling */
+suggestions .suggestions-item {
+    min-height: 180px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 20px;
+    background: var(--secondary-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.suggestions .suggestions-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Text styling */
+.suggestions .suggestions-item .text {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    z-index: 1;
+}
+
+/* Value display styling */
+.suggestions .suggestions-item #temperature,
+.suggestions .suggestions-item #humidity,
+.suggestions .suggestions-item #gas,
+.suggestions .suggestions-item #status,
+.suggestions .suggestions-item #ldr {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1d7efd;
+    margin: 10px 0;
+}
+
+/* Icon styling */
+.suggestions .suggestions-item span.material-symbols-outlined {
+    height: 60px;
+    width: 60px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container .suggestions {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .suggestions .suggestions-item {
+        min-height: 150px;
+        padding: 20px;
+    }
+
+    .suggestions .suggestions-item .text {
+        font-size: 1.2rem;
+    }
+
+    .suggestions .suggestions-item span.material-symbols-outlined {
+        height: 50px;
+        width: 50px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container .suggestions {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .suggestions .suggestions-item {
+        min-height: 130px;
+        padding: 15px;
+    }
+}
+
+/* Chats container styling ===================================== */
+
+.chats-container {
+    flex: 1 1 auto;
+        max-height: none;
+        min-height: 0;
+        overflow-y: auto;
+}
+
+.container .chats-container {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+
+.chats-container .pesan {
+    display: flex;
+    gap: 11px;
+    align-items: center;
+}
+
+.chats-container .user-message {
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.chats-container .pesan .pesan-text {
+    padding: 3px;
+    word-wrap: break-word;
+    white-space: pre-line;
+}
+
+
+.chats-container .user-message .pesan-text {
+    padding: 12px 16px;
+    max-width: 75%;
+    border-radius: 13px 13px 3px 13px;
+    background: var(--secondary-color);
+}
+
+
+.chats-container .bot-message .avatar {
+    height: 43px;
+    width: 43px;
+    flex-shrink: 0;
+    padding: 6px;
+    border-radius: 50%;
+    background: var(--secondary-color);
+    border: 1px solid var(--secondary-hover-color);
+}
+
+.chats-container .bot-message {
+    margin: 9px auto;
+}
+
+.avatar {
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* VOICE */
+/* From Uiverse.io by sahilxkhadka */
+.switch {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-color);
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.mic-on,
+.mic-off {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s ease-in-out;
+}
+
+.mic-on {
+    z-index: 4;
+}
+
+.mic-off {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    opacity: 0;
+}
+
+.switch:hover {
+    background-color: rgba(60, 64, 67, 0.8);
+}
+
+#checkbox {
+    display: none;
+}
+
+#checkbox:checked+.switch {
+    background-color: red
+}
+
+#checkbox:checked+.switch .mic-off {
+    opacity: 1;
+}
+
+#checkbox:active+.switch {
+    scale: 1.2;
+}
+
+/* Prompt container styling=========================================== */
+.prompt-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px 0;
+    background: var(--primary-color);
+}
+
+.prompt-container :where(.prompt-wrapper, .prompt-form, .prompt-actions) {
+    display: flex;
+    gap: 12px;
+    height: 56px;
+    align-items: center;
+
+}
+
+.prompt-wrapper .prompt-form {
+    width: 100%;
+    height: 100%;
+    border-radius: 130px;
+    background: var(--secondary-color);
+}
+
+.prompt-form .prompt-input {
+    height: 100%;
+    width: 100%;
+    font-weight: bold;
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    padding-left: 24px;
+    color: var(--text-color);
+}
+
+.prompt-form .prompt-input::placeholder {
+    color: var(--placeholder-color);
+}
+
+.prompt-wrapper button {
+    width: 56px;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    border-radius: 50%;
+    color: var(--text-color);
+    background: var(--secondary-color);
+}
+
+.prompt-wrapper button:hover {
+    background: var(--secondary-hover-color);
+}
+
+.prompt-form .prompt-actions {
+    gap: 5px;
+    margin-right: 7px;
+}
+
+.prompt-form .prompt-actions button {
+    height: 40px;
+    width: 45px;
+}
+
+.prompt-form #send-prompt-btn {
+    color: #fff;
+    display: none;
+    background: #1d7efd;
+    transition: 0.2s ease;
+}
+
+
+/* Ketika isi prompt maka button muncul */
+.prompt-form .prompt-input:valid~.prompt-actions #send-prompt-btn {
+    display: block;
+}
+
+.prompt-form #send-prompt-btn:hover {
+    background: #151b5a;
+}
+
+.prompt-form #stop-response-btn:hover {
+    color: #c11515;
+}
+
+.prompt-container .disclaimer-text {
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 16px 20px 0;
+    color: var(--placeholder-color);
+}
+
+
+.bot-message .pesan-text {
+    max-width: 75%;
+    white-space: pre-line;
+    text-align: left;
+    word-wrap: break-word;
+    line-height: 1.5;
+    padding: 12px 15px;
+    /* background-color: #f1f1f1; */
+    border-radius: 12px;
+}
+
+.user-message .pesan-text {
+    max-width: 75%;
+    white-space: pre-line;
+    text-align: left;
+    word-wrap: break-word;
+    line-height: 1.5;
+    padding: 12px 16px;
+    background: var(--secondary-color);
+    border-radius: 13px 13px 3px 13px;
+}
+
+
+
+/* Responsive styles untuk device dengan lebar maksimal 768px */
+@media (max-width: 768px) {
+    .container {
+        padding: 16px 0 40px;
+        max-height: calc(100vh - 100px);
+        /* Sesuaikan agar container tidak terlalu tinggi */
+    }
+
+    /* Atur ulang padding dan max-width untuk elemen utama */
+    .container :where(.app-header, .suggestions, .prompt-wrapper, .pesan, .disclaimer-text) {
+        padding: 0 10px;
+        max-width: 100%;
+    }
+
+    /* Untuk chat container, pastikan pesan mengambil lebar penuh layar */
+    .chats-container {
+        gap: 15px;
+        padding: 10px 0;
+    }
+
+    .chats-container .pesan {
+        max-width: 90%;
+        /* Mengizinkan pesan untuk memenuhi sebagian besar lebar layar */
+    }
+
+    .chats-container .user-message .pesan-text {
+        max-width: 85%;
+        padding: 10px 12px;
+    }
+
+    /* Sesuaikan ukuran prompt container agar pas di layar kecil */
+    .prompt-container {
+        padding: 12px 0;
+    }
+
+    .prompt-wrapper .prompt-form {
+        height: 48px;
+    }
+
+    .prompt-form .prompt-input {
+        font-size: 0.9rem;
+        padding-left: 16px;
+    }
+
+    .prompt-wrapper button {
+        width: 48px;
+        height: 48px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Responsive styles untuk device dengan lebar maksimal 480px */
+@media (max-width: 480px) {
+    .container {
+        padding: 12px 0 30px;
+        max-height: calc(100vh - 80px);
+    }
+
+    .chats-container .pesan {
+        max-width: 95%;
+    }
+
+    .prompt-wrapper .prompt-form {
+        height: 40px;
+    }
+
+    .prompt-form .prompt-input {
+        font-size: 0.85rem;
+        padding-left: 12px;
+    }
+
+    .prompt-wrapper button {
+        width: 40px;
+        height: 40px;
+    }
+}
